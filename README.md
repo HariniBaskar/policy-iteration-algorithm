@@ -8,7 +8,8 @@ The problem statement is a Five stage slippery walk where there are five stages 
 
 ## State:
 The states include two terminal states: 0-Hole[H] and 6-Goal[G]. 
-It has five non terminal states includin starting state.
+
+It has five non terminal states including starting state.
 
 ## Action:
 Left:0
@@ -16,8 +17,11 @@ Right:1
 
 ## Transition Probability:
 The transition probabilities for the problem statement is:
+
 50% - The agent moves in intended direction.
+
 33.33% - The agent stays in the same state.
+
 16.66% - The agent moves in orthogonal direction.
 
 ## Reward:
@@ -45,7 +49,14 @@ The algorithm implemented in the policy_iteration is a method used to find the o
 
 To summarize, policy iteration iteratively improves the policy by alternating between policy evaluation and policy improvement steps until convergence is reached. The algorithm guarantees to find the optimal policy for the given MDP P with a discount factor gamma.
 
+## PROGRAM
+```
+Developed by: Harini B.
+Register Number: 212221230035
+```
+
 ## POLICY IMPROVEMENT FUNCTION
+```
 def policy_improvement(V, P, gamma=1.0):
     Q = np.zeros((len(P), len(P[0])), dtype=np.float64)
     # Write your code here to implement policy improvement algorithm
@@ -56,8 +67,9 @@ def policy_improvement(V, P, gamma=1.0):
           new_pi = lambda s: {s:a for s, a in enumerate(np.argmax(Q, axis=1))}[s]
 
     return new_pi
-
+```
 ## POLICY ITERATION FUNCTION
+```
 def policy_iteration(P, gamma=1.0,theta=1e-10):
   random_actions=np.random.choice(tuple(P[0].keys()),len(P))
   pi = lambda s: {s:a for s, a in enumerate(random_actions)}[s]
@@ -68,7 +80,7 @@ def policy_iteration(P, gamma=1.0,theta=1e-10):
     if old_pi == {s:pi(s) for s in range(len(P))}:
       break
   return V,pi
-
+```
 ## OUTPUT:
 ## Optimal policy:
 ![out31](https://github.com/HariniBaskar/policy-iteration-algorithm/assets/93427253/b2beff83-5cda-49ac-8216-03d29b5602d3)
